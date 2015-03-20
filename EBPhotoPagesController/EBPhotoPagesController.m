@@ -1328,24 +1328,18 @@ static NSString *kActionSheetIndexKey= @"actionSheetTargetIndex";
 
 - (void)showActionSheetForPhotoAtIndex:(NSInteger)index
 {
-    BOOL showDefaultActionSheet = [self.photosDataSource respondsToSelector:@selector(photoPagesController:shouldAllowDeleteForPhotoAtIndex:)] ?
-    [self.photosDataSource photoPagesController:self
-               shouldAllowDeleteForPhotoAtIndex:index] : YES;
+    UIActionSheet * actionSheet = [self.photoPagesFactory photoPagesController:self
+                                                    actionSheetForPhotoAtIndex:index];
+    NSDictionary *targetInfo = @{kActionSheetTargetKey:
+                                     [self photoViewControllerWithIndex:index]};
     
+    [actionSheet setDelegate:self];
+    [self setActionSheetTargetInfo:targetInfo];
+    [actionSheet showInView:self.view];
     
-    if(showDefaultActionSheet){
-        UIActionSheet * actionSheet = [self.photoPagesFactory photoPagesController:self
-                                                        actionSheetForPhotoAtIndex:index];
-        NSDictionary *targetInfo = @{kActionSheetTargetKey:
-                                         [self photoViewControllerWithIndex:index]};
-        
-        [actionSheet setDelegate:self];
-        [self setActionSheetTargetInfo:targetInfo];
-        [actionSheet showInView:self.view];
-        
-        [self setUpperBarAlpha:0];
-        [self setLowerBarAlpha:0];
-    }
+    [self setUpperBarAlpha:0];
+    [self setLowerBarAlpha:0];
+
 }
 
 - (void)showActionSheetForTagPopover:(EBTagPopover *)tagPopover
