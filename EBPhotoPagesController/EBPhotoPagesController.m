@@ -142,6 +142,9 @@ static NSString *kActionSheetIndexKey= @"actionSheetTargetIndex";
     [self loadPhotoPagesFactory];
     [self loadOperationsQueue];
     [self setCommentsHidden:YES];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidOpenPhotoViewer" object:nil userInfo:@{ @"viewController" : self }];
+    
 }
 
 - (void)dealloc
