@@ -35,20 +35,20 @@
     
     [self setSimulateLatency:NO];
    
-    
-    NSArray *photo1Comments = @[
-                                [DEMOComment commentWithProperties:@{@"commentText": @"This is a comment!",
-                                 @"commentDate": [NSDate dateWithTimeInterval:-252750 sinceDate:[NSDate date]],
-                                 @"authorImage": [UIImage imageNamed:@"aaronalfred.jpg"],
-                                 @"authorName" : @"Aaron Alfred"}]
-                                ];
-    
-    NSArray *photo5Comments = @[
-                                [DEMOComment commentWithProperties:@{@"commentText": @"Looks fun, and greasy!",
-                                                                     @"commentDate": [NSDate dateWithTimeInterval:-232500 sinceDate:[NSDate date]],
-                                                                     @"authorImage": [UIImage imageNamed:@"vladarbatov.jpg"],
-                                                                     @"authorName" : @"VLADARBATOV"}]
-                                ];
+//    
+//    NSArray *photo1Comments = @[
+//                                [DEMOComment commentWithProperties:@{@"commentText": @"This is a comment!",
+//                                 @"commentDate": [NSDate dateWithTimeInterval:-252750 sinceDate:[NSDate date]],
+//                                 @"authorImage": [UIImage imageNamed:@"aaronalfred.jpg"],
+//                                 @"authorName" : @"Aaron Alfred"}]
+//                                ];
+//    
+//    NSArray *photo5Comments = @[
+//                                [DEMOComment commentWithProperties:@{@"commentText": @"Looks fun, and greasy!",
+//                                                                     @"commentDate": [NSDate dateWithTimeInterval:-232500 sinceDate:[NSDate date]],
+//                                                                     @"authorImage": [UIImage imageNamed:@"vladarbatov.jpg"],
+//                                                                     @"authorName" : @"VLADARBATOV"}]
+//                                ];
     
     NSArray *photo1Tags = @[
                             [DEMOTag tagWithProperties:@{@"tagPosition" : [NSValue valueWithCGPoint:CGPointMake(0.565, 0.74)],
@@ -67,22 +67,22 @@
 
 
     
-    NSArray *photo2Comments = @[
-                                [DEMOComment commentWithProperties:@{@"commentText": @"What is this?",
-                                 @"commentDate": [NSDate dateWithTimeInterval:-2341500 sinceDate:[NSDate date]],
-                                 @"authorImage": [UIImage imageNamed:@"iqonicd.jpg"],
-                                 @"authorName" : @"IqonICD"}],
-                                
-                                [DEMOComment commentWithProperties:@{@"commentText": @"It's a Lego minifig.",
-                                 @"commentDate": [NSDate dateWithTimeInterval:-2262500 sinceDate:[NSDate date]],
-                                 @"authorImage": [UIImage imageNamed:@"billskenney.jpg"],
-                                 @"authorName" : @"Bill S. Kenney"}],
-                                
-                                [DEMOComment commentWithProperties:@{@"commentText": @"Pretty cool.",
-                                 @"commentDate": [NSDate dateWithTimeInterval:-212500 sinceDate:[NSDate date]],
-                                 @"authorImage": [UIImage imageNamed:@"liang.jpg"],
-                                 @"authorName" : @"liang"}],
-                                ];
+//    NSArray *photo2Comments = @[
+//                                [DEMOComment commentWithProperties:@{@"commentText": @"What is this?",
+//                                 @"commentDate": [NSDate dateWithTimeInterval:-2341500 sinceDate:[NSDate date]],
+//                                 @"authorImage": [UIImage imageNamed:@"iqonicd.jpg"],
+//                                 @"authorName" : @"IqonICD"}],
+//                                
+//                                [DEMOComment commentWithProperties:@{@"commentText": @"It's a Lego minifig.",
+//                                 @"commentDate": [NSDate dateWithTimeInterval:-2262500 sinceDate:[NSDate date]],
+//                                 @"authorImage": [UIImage imageNamed:@"billskenney.jpg"],
+//                                 @"authorName" : @"Bill S. Kenney"}],
+//                                
+//                                [DEMOComment commentWithProperties:@{@"commentText": @"Pretty cool.",
+//                                 @"commentDate": [NSDate dateWithTimeInterval:-212500 sinceDate:[NSDate date]],
+//                                 @"authorImage": [UIImage imageNamed:@"liang.jpg"],
+//                                 @"authorName" : @"liang"}],
+//                                ];
     
     NSArray *photo2Tags = @[
                             [DEMOTag tagWithProperties:@{@"tagPosition" : [NSValue valueWithCGPoint:CGPointMake(0.11, 0.6)],
@@ -215,14 +215,14 @@
       @{@"imageFile": @"photo1.jpg",
       @"attributedCaption" : [[NSAttributedString alloc] initWithString:@"The author of EBPhotoPages."],
         @"tags": photo1Tags,
-        @"comments" : photo1Comments,
+//        @"comments" : photo1Comments,
       }],
      
      [DEMOPhoto photoWithProperties:
       @{@"imageFile": @"photo2.jpg",
         @"caption": @"A Dungeon crawler!",
         @"tags" : photo2Tags,
-        @"comments" : photo2Comments
+//        @"comments" : photo2Comments
       }],
      
      [DEMOPhoto photoWithProperties:
@@ -247,7 +247,7 @@
      [DEMOPhoto photoWithProperties:
       @{@"imageFile": @"photo5.jpg",
         @"caption" : @"A new Instagram comic series drawn by Eddy with only markers and crackers.",
-        @"comments" : photo5Comments,
+//        @"comments" : photo5Comments,
       }],
      
      [DEMOPhoto photoWithProperties:
