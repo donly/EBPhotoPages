@@ -442,6 +442,7 @@ replacementString:(NSString *)string {
 
 - (BOOL)resignFirstResponder
 {
+    [super resignFirstResponder];
     [self.tagTextField setUserInteractionEnabled:NO];
     return self.tagTextField.resignFirstResponder;
 }

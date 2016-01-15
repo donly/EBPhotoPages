@@ -45,6 +45,7 @@ static NSString *kActionSheetIndexKey= @"actionSheetTargetIndex";
 @property (nonatomic, strong) UIBarButtonItem *commentsExitBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *hideCommentsBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *toggleTagsBarButtonItem;
+@property (nonatomic, strong) UIBarButtonItem *counterBarButtonItem;
 
 @property (weak) UIToolbar *upperToolbar;
 @property (weak) UIToolbar *lowerToolbar;
@@ -502,11 +503,13 @@ static NSString *kActionSheetIndexKey= @"actionSheetTargetIndex";
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self setStatusBarDisabled:YES withAnimation:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [self setStatusBarDisabled:NO withAnimation:animated];
 }
 
@@ -621,8 +624,10 @@ static NSString *kActionSheetIndexKey= @"actionSheetTargetIndex";
         
         if(self.captionView.contentOffset.y + self.captionView.contentInset.top > 10){
             [self setPhotoDimLevel:0.5];
+            self.captionView.expanded = YES;
         } else {
             [self setPhotoDimLevel:0.0];
+            self.captionView.expanded = NO;
         }
     }
     
@@ -732,7 +737,15 @@ static NSString *kActionSheetIndexKey= @"actionSheetTargetIndex";
 - (void)setMetaDataWithPhotoIndex:(NSInteger)photoIndex
 {
     NSLog(@"update meta data %li", (long)photoIndex);
-    
+    NSString *counterTitle = nil;
+
+    if ([self.photosDataSource respondsToSelector:@selector(photoPagesController:counterForPhotoAtIndex:)]) {
+        counterTitle = [self.photosDataSource photoPagesController:self counterForPhotoAtIndex:photoIndex];
+    } else {
+        counterTitle = [NSString stringWithFormat:@"%ld/%ld", photoIndex+1, (long)_totalCount];
+    }
+
+    self.counterBarButtonItem.title = counterTitle;
 }
 
 - (void)setInterfaceHidden:(BOOL)hidden
@@ -939,6 +952,16 @@ static NSString *kActionSheetIndexKey= @"actionSheetTargetIndex";
     }
     
     return _doneBarButtonItem;
+}
+
+- (UIBarButtonItem *)counterBarButtonItem
+{
+    if (_counterBarButtonItem == nil) {
+        self.counterBarButtonItem = [self.photoPagesFactory counterBarButtonItemForPhotoPagesController:self];
+        [self setMetaDataWithPhotoIndex:0];
+    }
+
+    return _counterBarButtonItem;
 }
 
 - (UIBarButtonItem *)cancelBarButtonItem
