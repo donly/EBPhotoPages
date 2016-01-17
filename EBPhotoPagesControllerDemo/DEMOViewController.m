@@ -35,14 +35,14 @@
     
     [self setSimulateLatency:NO];
    
-//    
-//    NSArray *photo1Comments = @[
-//                                [DEMOComment commentWithProperties:@{@"commentText": @"This is a comment!",
-//                                 @"commentDate": [NSDate dateWithTimeInterval:-252750 sinceDate:[NSDate date]],
-//                                 @"authorImage": [UIImage imageNamed:@"aaronalfred.jpg"],
-//                                 @"authorName" : @"Aaron Alfred"}]
-//                                ];
-//    
+    
+    NSArray *photo1Comments = @[
+                                [DEMOComment commentWithProperties:@{@"commentText": @"This is a comment!",
+                                 @"commentDate": [NSDate dateWithTimeInterval:-252750 sinceDate:[NSDate date]],
+                                 @"authorImage": [UIImage imageNamed:@"aaronalfred.jpg"],
+                                 @"authorName" : @"Aaron Alfred"}]
+                                ];
+//
 //    NSArray *photo5Comments = @[
 //                                [DEMOComment commentWithProperties:@{@"commentText": @"Looks fun, and greasy!",
 //                                                                     @"commentDate": [NSDate dateWithTimeInterval:-232500 sinceDate:[NSDate date]],
@@ -215,7 +215,7 @@
       @{@"imageFile": @"photo1.jpg",
       @"attributedCaption" : [[NSAttributedString alloc] initWithString:@"The author of EBPhotoPages. That's a cool feature, it's always annoying when small images get blown up and pixelated. That's a cool feature, it's always annoying when small images get blown up and pixelated. That's a cool feature, it's always annoying when small images get blown up and pixelated. That's a cool feature, it's always annoying when small images get blown up and pixelated."],
         @"tags": photo1Tags,
-//        @"comments" : photo1Comments,
+        @"comments" : photo1Comments,
       }],
      
      [DEMOPhoto photoWithProperties:
@@ -315,12 +315,7 @@
     DEMOPhoto *photo;
     
     photo = self.photos[0];
-    //[photo setDisabledDelete:YES];
-    
-    photo = self.photos[12];
-    [photo setDisabledActivities:YES];
-    [photo setDisabledCommenting:YES];
-    [photo setDisabledMiscActions:YES];
+    [photo setDisabledDelete:YES];
 
     
     photo = self.photos[3];
@@ -334,6 +329,10 @@
     [photo setDisabledDeleteForTags:YES];
     [photo setDisabledActivities:YES];
     
+    photo = self.photos[12];
+    [photo setDisabledActivities:YES];
+    [photo setDisabledCommenting:YES];
+    [photo setDisabledMiscActions:YES];
 }
 
 - (void)viewDidLoad
@@ -363,7 +362,7 @@
 - (IBAction)didSelectViewPhotos:(id)sender
 {    
     EBPhotoPagesController *photoPagesController = [[EBPhotoPagesController alloc] initWithDataSource:self delegate:self];
-    photoPagesController.totalCount = 12;
+    photoPagesController.totalCount = self.photos.count;
     [self presentViewController:photoPagesController animated:YES completion:nil];
 }
 
